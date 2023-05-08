@@ -1,0 +1,31 @@
+name: Deploy SE Front
+on:
+  push:
+    branches:
+      - master
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: IHOJOSE - Sistema Experto
+        uses: actions/checkout@v3.0.2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3.4.1
+        with:
+          node-version: '16'
+
+      - name: Install Dependencies
+        run: npm install --legacy-peer-deps
+
+      - name: Build Angular
+        run: npm run build
+
+      - name: Deploy Static
+        if: success()
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          deploy_key: ${{ secrets.UMB_DEPLOY_KEY }}
+          publish_dir: dist
