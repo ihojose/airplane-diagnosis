@@ -27,5 +27,5 @@ jobs:
         if: success()
         uses: peaceiris/actions-gh-pages@v3
         with:
-          personal_token: ${{ secrets.MYPC }}
-          publish_dir: dist
+          deploy_key: ${{ secrets.SE }}
+          publish_dir: dist/se
