@@ -1,4 +1,4 @@
-name: Deploy SE Front
+name: Sistema Experto
 on:
   push:
     branches:
