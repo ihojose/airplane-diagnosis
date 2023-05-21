@@ -1,0 +1,31 @@
+<div class="diagnosis">
+
+  <div class="card">
+    <div class="title uk-animation-slide-left-medium">
+      <h2>Bienvenido {{userData?.name}}</h2>
+      <h3>Panel de diagnóstico.</h3>
+    </div>
+
+    <div class="d-content uk-animation-slide-right-medium">
+      <div class="loading" *ngIf="loading">
+        <div uk-spinner="ratio: 1"></div>
+      </div>
+      <div class="diagnosis-form">
+        <div *ngIf="rule && !loading" class="show uk-animation-fade">
+          <div class="rule" [innerText]="rule.rule"></div>
+          <div class="options">
+            <div class="item" *ngFor="let i of rule.options">
+              <button type="button" [innerText]="i.description" (click)="setOption(i)"></button>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="rule === undefined && loading" class="no-content">
+          Cargando regla...
+        </div>
+        <div *ngIf="error !== ''" class="no-show">
+          No hay regla cargada.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

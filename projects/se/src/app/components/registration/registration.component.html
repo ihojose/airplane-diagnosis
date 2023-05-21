@@ -1,0 +1,54 @@
+<div class="login">
+  <div class="card wrapper">
+    <div class="title uk-animation-slide-left-medium">
+      <h2>Airbus Expert</h2>
+      <h3>Registro de cuenta de usuario.</h3>
+    </div>
+    <div class="content uk-animation-slide-right-medium">
+      <div class="loading" *ngIf="loading">
+        <div uk-spinner="ratio: 1"></div>
+      </div>
+
+      <div class="login-error" *ngIf="error != ''" [innerText]="error"></div>
+
+      <form class="form" (submit)="doRegistration()" [formGroup]="reg" novalidate>
+        <div>
+          <div class="group">
+            <label>Tipo de Identificación</label>
+            <select formControlName="id_type" class="uk-select">
+              <option value="C">Cédula de ciudadanía</option>
+              <option value="T">Cédula de extrangería</option>
+              <option value="P">Pasaporte</option>
+            </select>
+          </div>
+          <div class="group">
+            <label>Identificación</label>
+            <input type="text" formControlName="username" class="uk-input">
+          </div>
+          <div class="group">
+            <label>Nombre</label>
+            <input type="text" formControlName="name" class="uk-input">
+          </div>
+          <div class="group">
+            <label>Apellido</label>
+            <input type="text" formControlName="surname" class="uk-input">
+          </div>
+          <div class="group">
+            <label>Contraseña</label>
+            <input type="password" formControlName="password" class="uk-input">
+          </div>
+          <div class="group">
+            <label>Repita la contraseña</label>
+            <input type="password" formControlName="re_password" class="uk-input">
+          </div>
+          <div class="group-submit">
+            <button type="submit" mat-raised-button color="primary">Registrar cuenta</button>
+          </div>
+          <div class="reg">
+            <a [routerLink]="['', 'account', 'login']">¿Ya tienes cuenta de usuario?</a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

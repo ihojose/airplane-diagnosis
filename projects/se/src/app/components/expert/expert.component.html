@@ -1,0 +1,11 @@
+<router-outlet></router-outlet>
+
+<div class="session">
+  <button mat-mini-fab color="warn" aria-label="Out" (click)="logout()">
+    <mat-icon>logout</mat-icon>
+  </button>
+</div>
+
+<div class="controls" *ngIf="isAdmin">
+  <button mat-raised-button color="primary" (click)="openBottomSheet()">Menú de administración</button>
+</div>

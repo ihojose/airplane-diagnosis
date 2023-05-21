@@ -17,6 +17,10 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": [
+              "sweetalert2",
+              "moment"
+            ],
             "outputPath": "dist/se",
             "index": "projects/se/src/index.html",
             "main": "projects/se/src/main.ts",
@@ -30,9 +34,14 @@
               "projects/se/src/assets"
             ],
             "styles": [
+              "@angular/material/prebuilt-themes/indigo-pink.css",
+              "uikit/dist/css/uikit.min.css",
               "projects/se/src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "uikit/dist/js/uikit.min.js",
+              "uikit/dist/js/uikit-icons.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -46,6 +55,12 @@
                   "type": "anyComponentStyle",
                   "maximumWarning": "2kb",
                   "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/se/src/environments/environment.ts",
+                  "with": "projects/se/src/environments/environment.prod.ts"
                 }
               ],
               "outputHashing": "all"
@@ -93,6 +108,7 @@
               "projects/se/src/assets"
             ],
             "styles": [
+              "@angular/material/prebuilt-themes/indigo-pink.css",
               "projects/se/src/styles.scss"
             ],
             "scripts": []
